@@ -22,7 +22,6 @@ class MIME
     const MS_EOT = 'application/vnd.ms-fontobject';
     const EPUB = 'application/epub+zip';
     const GZIP = 'application/gzip';
-    const MS_ICO = 'image/vnd.microsoft.icon';
     const JAR = 'application/java-archive';
     const APPLE_INSTALLER_PACKAGE = 'application/vnd.apple.installer+xml';
     const ODP = 'application/vnd.oasis.opendocument.presentation';
@@ -76,6 +75,7 @@ class MIME
     const AVIF = 'image/avif';
     const BMP = 'image/bmp';
     const TIFF = 'image/tiff';
+    const MS_ICO = 'image/vnd.microsoft.icon';
 
     /**
      * Text MIME
@@ -96,6 +96,47 @@ class MIME
     const OGG = 'video/ogg';
     const MPEG_TS = 'video/mp2t';
     const WEBM = 'video/webm';
+
+    const IMAGES = [
+        self::GIF,
+        self::PNG,
+        self::JPEG,
+        self::SVG,
+        self::WEBP,
+        self::AVIF,
+        self::BMP,
+        self::TIFF,
+        self::MS_ICO,
+    ];
+
+    const VIDEOS = [
+        self::AVI,
+        self::MP4,
+        self::MPEG,
+        self::OGG,
+        self::MPEG_TS,
+        self::WEBM,
+    ];
+
+    const FONTS = [
+        self::OTF,
+        self::TTF,
+        self::WOFF,
+        self::WOFF2,
+        self::MS_EOT,
+    ];
+
+    const AUDIOS = [
+        self::MP3,
+        self::OPUS,
+        self::OGA,
+        self::AAC,
+        self::WEBA,
+        self::CDA,
+        self::MID,
+        self::MIDI,
+        self::WAV,
+    ];
 
     public static function getByExtension(string $extension): string
     {
@@ -309,6 +350,26 @@ class MIME
             'eot' => static::MS_EOT,
             default => static::OCTET_STREAM,
         };
+    }
+
+    public static function isImage(string $mime): bool
+    {
+        return in_array($mime, static::IMAGES);
+    }
+
+    public static function isVideo(string $mime): bool
+    {
+        return in_array($mime, static::VIDEOS);
+    }
+
+    public static function isFont(string $mime): bool
+    {
+        return in_array($mime, static::FONTS);
+    }
+
+    public static function isAudio(string $mime): bool
+    {
+        return in_array($mime, static::AUDIOS);
     }
 }
 
