@@ -230,6 +230,98 @@ class MIME
         };
     }
 
+    public static function getExtensionByMime(string $mime): string
+    {
+        return match ($mime) {
+            // Image
+            static::JPEG => 'jpeg',
+            static::PNG => 'png',
+            static::SVG => 'svg',
+            static::WEBP => 'webp',
+            static::AVIF => 'avif',
+            static::GIF => 'gif',
+            static::MS_ICO => 'ico',
+            static::BMP => 'bmp',
+            static::TIFF => 'tif', 'tiff',
+
+            // Office
+            static::CSV => 'csv',
+            static::PLAIN => 'txt',
+            static::PDF => 'pdf',
+            static::MS_DOCX => 'docx',
+            static::MS_DOC => 'doc',
+            static::ODP => 'odp',
+            static::ODS => 'ods',
+            static::ODT => 'odt',
+            static::PPTX => 'pptx',
+            static::PPT => 'ppt',
+            static::XLSX => 'xlsx',
+            static::XLS => 'xls',
+            static::RTF => 'rtf',
+            static::ICS => 'ics',
+            static::MS_VISIO => 'vsd',
+            static::ABIWORD => 'abw',
+
+            // Video
+            static::MP4 => 'mp4',
+            static::OGG => 'ogg',
+            static::WEBM => 'webm',
+            static::AVI => 'avi',
+            static::MPEG => 'mpeg',
+            static::MPEG_TS => 'ts',
+
+            // Audio
+            static::MP3 => 'mp3',
+            static::OPUS => 'opus',
+            static::OGA => 'oga',
+            static::AAC => 'aac',
+            static::WEBA => 'weba',
+            static::CDA => 'cda',
+            static::MID => 'mid',
+            static::MIDI => 'midi',
+            static::WAV => 'wav',
+
+            // Archive
+            static::ZIP => 'zip',
+            static::RAR => 'rar',
+            static::SEVEN_ZIP => '7z',
+            static::TAR => 'tar',
+            static::GZIP => 'gzip',
+            static::BZIP => 'bz',
+            static::BZIP2 => 'bz2',
+            static::ARCHIVE_DOCUMENT => 'arc',
+
+            // Code
+            static::HTML => 'html', 'htm',
+            static::CSS => 'css',
+            static::JS => 'js', 'mjs',
+            static::JSON => 'json',
+            static::JSONLD => 'jsonld',
+            static::XML => 'xml',
+            static::XHTML => 'xhtml',
+            static::PHP => 'php',
+            static::SH => 'sh',
+            static::CSH => 'csh',
+            static::JAR => 'jar',
+
+            // Font
+            static::OTF => 'otf',
+            static::TTF => 'ttf',
+            static::WOFF => 'woff',
+            static::WOFF2 => 'woff2',
+            static::MS_EOT => 'eot',
+
+            // Ebook
+            static::EPUB => 'epub',
+            static::KINDLE_EBOOK => 'azw',
+
+            // Extra
+            static::APPLE_INSTALLER_PACKAGE => 'mpkg',
+
+            default => '',
+        };
+    }
+
     public static function getImageByExtension(string $extension): string
     {
         return match ($extension) {
